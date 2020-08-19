@@ -19,9 +19,7 @@ router.route('/:id').get((req, res) => {
 
 // Create new product
 router.route('/').post((req, res) => {
-	const name = req.body.name;
-	const category_id = req.body.category_id;
-	const newProduct = new Product({ name, category_id });
+	const newProduct = new Product(req.body);
 	newProduct
 		.save()
 		.then(() => res.json('Product added.'))
@@ -32,11 +30,11 @@ router.route('/').post((req, res) => {
 router.route('/:id').put(async (req, res) => {
 	const id = req.params.id;
 	try {
-		let productUpdate = await Product.findByIdAndUpdate(id, req.body, {
+		let udpatedProduct = await Product.findByIdAndUpdate(id, req.body, {
 			new: true,
 			useFindAndModify: false,
 		});
-		res.json(productUpdate);
+		res.json(udpatedProduct);
 	} catch (err) {
 		res.status(400).json('Error: ' + err);
 	}
