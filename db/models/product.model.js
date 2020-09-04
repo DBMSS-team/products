@@ -5,8 +5,7 @@ const Schema = mongoose.Schema;
 const productSchema = new Schema(
 	{
 		name: { type: String, required: true },
-		category_id: { type: String, required: true },
-		price: { type: mongoose.Decimal128, required: true },
+		category_id: { type: String, required: true }
 	},
 	{
 		timestamps: true,
