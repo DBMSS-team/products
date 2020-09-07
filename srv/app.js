@@ -6,7 +6,7 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 const { authorization, a2aClient, logger } = require(__commons);
 const cookieParser = require("cookie-parser");
-const productRouter = require("./routes/payment");
+const productRouter = require("./routes/product");
 const appLogger = logger.appLogger;
 const errorLogger = logger.errorLogger;
 
@@ -31,7 +31,7 @@ connection.once("open", () => {
 	appLogger.info("MongoDB database connection established successfully");
 });
 
-a2aClient(app);
+a2aClient.use(app);
 logger.use(app);
 app.use(cors());
 app.use(express.json());
