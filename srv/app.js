@@ -13,7 +13,7 @@ const errorLogger = logger.errorLogger;
 require("dotenv").config();
 
 const app = express();
-const port = process.env.PORT || 5008;
+const port = process.env.PORT || 5005;
 
 const uri = process.env.ATLAS_URI;
 mongoose
